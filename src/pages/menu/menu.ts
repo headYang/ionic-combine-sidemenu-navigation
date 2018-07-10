@@ -42,6 +42,17 @@ export class MenuPage {
   }
 
   isActive(page: PageInterface) {
+    let childNav = this.nav.getActiveChildNav();
 
+    if(childNav) {
+      if(childNav.getSelected() && childNav.getSelected().root === page.tabComponent) {
+        return 'primary';
+      }
+      return;
+    }
+
+    if(this.nav.getActive() && this.nav.getActive().name === page.pageName) {
+      return 'primary';
+    }
   }
 }
